@@ -11,7 +11,7 @@ const poker = {
   highCard: 1
 }
 
-function compareHands(hand1, hand2) {
+function compareHands(right, left) {
   const handRanks = Object.keys(poker);
   
   const rankHand = (hand) => {
@@ -23,18 +23,25 @@ function compareHands(hand1, hand2) {
     return 0;
   };
 
-  const hand1Rank = rankHand(hand1);
-  const hand2Rank = rankHand(hand2);
+  const rightHand = rankHand(right);
+  const leftHand = rankHand(left);
 
-  if (hand1Rank > hand2Rank) {
+  if (rightHand > leftHand) {
+    console.log(`Right: ${rightHand} > Left: ${leftHand}`);
+    console.log('Right wins!');
     return 1;
-  } else if (hand1Rank < hand2Rank) {
+  } else if (rightHand < leftHand) {
+    console.log(`Left: ${leftHand} > Right: ${rightHand}`);
+    console.log('Left wins!');
     return -1;
   } else {
+    console.log(`It's a tie with ${rightHand} points each!`);
     return 0;
   }
 }
 
-const result = compareHands(['pair'], ['fullHouse']);
+compareHands(['pair'], ['fullHouse']);
 
-console.log(result);
+module.exports = {
+  compareHands
+};

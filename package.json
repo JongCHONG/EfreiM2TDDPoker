@@ -1,0 +1,15 @@
+{
+  "name": "efreim2tddpoker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "poker.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
