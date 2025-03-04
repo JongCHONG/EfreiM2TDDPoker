@@ -1,3 +1,5 @@
+const readline = require('readline');
+
 const poker = {
   royalFlush: 100,
   straightFlush: 75,
@@ -40,7 +42,45 @@ function compareHands(right, left) {
   }
 }
 
-compareHands(['pair'], ['fullHouse']);
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+const validHands = Object.keys(poker);
+
+const isValidHand = (hand) => {
+  return hand.every(card => validHands.includes(card));
+};
+
+const askForHand = (prompt, callback) => {
+  rl.question(prompt, (input) => {
+    const hand = input.split(',').map(card => card.trim());
+    if (isValidHand(hand)) {
+      callback(hand);
+    } else {
+      console.log('Invalid hand, please try again.');
+      askForHand(prompt, callback);
+    }
+  });
+};
+
+const playGame = () => {
+  askForHand('Enter the right hand (comma separated): ', (rightHand) => {
+    askForHand('Enter the left hand (comma separated): ', (leftHand) => {
+      compareHands(rightHand, leftHand);
+      rl.question('Do you want to play again? (yes/no): ', (answer) => {
+        if (answer.toLowerCase() === 'yes') {
+          playGame();
+        } else {
+          rl.close();
+        }
+      });
+    });
+  });
+};
+
+playGame();
 
 module.exports = {
   compareHands
