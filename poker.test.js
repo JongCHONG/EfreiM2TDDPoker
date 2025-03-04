@@ -1,6 +1,13 @@
-const { compareHands, playGame, rankHand,isValidHand } = require("./poker");
+const {
+  compareHands,
+  playGame,
+  rankHand,
+  isValidHand,
+  askForHand,
+} = require("./poker");
 const readline = require("readline");
 const {} = require("./poker");
+jest.mock("readline");
 
 describe("compareHands", () => {
   test("compareHands should return 1 when right hand is stronger", () => {
@@ -81,5 +88,50 @@ describe("isValidHand", () => {
 
   test("should return true for an empty hand", () => {
     expect(isValidHand([])).toBe(true);
+  });
+});
+
+describe("askForHand", () => {
+  let rl;
+  let askForHand;
+  let isValidHand;
+  // je comprend pas comment ça marche le mocked
+  
+  beforeEach(() => {
+    rl = {
+      question: jest.fn(),
+    };
+    readline.createInterface.mockReturnValue(rl);
+
+    isValidHand = jest.fn();
+    jest.doMock("./poker", () => ({
+      ...jest.requireActual("./poker"),
+      isValidHand,
+    }));
+
+    askForHand = require("./poker").askForHand;
+  });
+
+  afterEach(() => {
+    jest.resetModules();
+    jest.clearAllMocks();
+  });
+
+  test("should prompt the user and call callback with a valid hand", () => {
+    const callback = jest.fn();
+
+    isValidHand.mockReturnValue(true);
+
+    askForHand("Enter your hand: ", callback);
+    expect(rl.question).toHaveBeenCalledWith(
+      "Enter your hand: ",
+      expect.any(Function)
+    );
+
+    const userInput = "pair, fullHouse";
+    const questionCallback = rl.question.mock.calls[0][1];
+    questionCallback(userInput);
+
+    expect(callback).toHaveBeenCalledWith(["pair", "fullHouse"]);
   });
 });

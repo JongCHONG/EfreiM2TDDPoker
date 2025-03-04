@@ -87,4 +87,5 @@ module.exports = {
   playGame,
   rankHand,
   isValidHand,
+  askForHand,
 };
