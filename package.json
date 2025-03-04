@@ -5,7 +5,7 @@
   "main": "poker.js",
   "scripts": {
     "start": "nodemon poker.js",
-    "test": "jest"
+    "test:watch": "jest --watchAll --coverage"
   },
   "keywords": [],
   "author": "",
