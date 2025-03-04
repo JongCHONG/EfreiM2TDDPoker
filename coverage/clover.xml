@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1741101364936" clover="3.2.0">
-  <project timestamp="1741101364936" name="All files">
-    <metrics statements="41" coveredstatements="29" conditionals="10" coveredconditionals="6" methods="11" coveredmethods="4" elements="62" coveredelements="39" complexity="0" loc="41" ncloc="41" packages="1" files="1" classes="1"/>
+<coverage generated="1741101410879" clover="3.2.0">
+  <project timestamp="1741101410879" name="All files">
+    <metrics statements="41" coveredstatements="30" conditionals="10" coveredconditionals="6" methods="11" coveredmethods="6" elements="62" coveredelements="42" complexity="0" loc="41" ncloc="41" packages="1" files="1" classes="1"/>
     <file name="poker.js" path="/Users/chongjonghoa/Desktop/EfreiM2TDDPoker/poker.js">
-      <metrics statements="41" coveredstatements="29" conditionals="10" coveredconditionals="6" methods="11" coveredmethods="4"/>
+      <metrics statements="41" coveredstatements="30" conditionals="10" coveredconditionals="6" methods="11" coveredmethods="6"/>
       <line num="1" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
       <line num="16" count="1" type="stmt"/>
@@ -27,7 +27,7 @@
       <line num="45" count="1" type="stmt"/>
       <line num="50" count="1" type="stmt"/>
       <line num="52" count="1" type="stmt"/>
-      <line num="53" count="0" type="stmt"/>
+      <line num="53" count="7" type="stmt"/>
       <line num="56" count="1" type="stmt"/>
       <line num="57" count="1" type="stmt"/>
       <line num="58" count="0" type="stmt"/>

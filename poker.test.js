@@ -61,3 +61,25 @@ describe("rankHand", () => {
     expect(rankHand(["pair", "royalFlush"])).toBe(100); // royalFlush est plus fort
   });
 });
+
+describe("isValidHand", () => {
+  test("should return true for a valid hand", () => {
+    expect(isValidHand(["royalFlush"])).toBe(true);
+  });
+
+  test("should return true for multiple valid hands", () => {
+    expect(isValidHand(["pair", "straight", "flush"])).toBe(true);
+  });
+
+  test("should return false for an invalid hand", () => {
+    expect(isValidHand(["invalidHand"])).toBe(false);
+  });
+
+  test("should return false for a mix of valid and invalid hands", () => {
+    expect(isValidHand(["fullHouse", "invalidHand"])).toBe(false);
+  });
+
+  test("should return true for an empty hand", () => {
+    expect(isValidHand([])).toBe(true);
+  });
+});
